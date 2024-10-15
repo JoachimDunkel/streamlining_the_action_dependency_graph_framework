@@ -73,7 +73,8 @@ To plot results, `plot_construction_runtime_line.py` and `plot_wait_action_remov
 
 
 ### Wait action impact remarks
-Please note that, due to cycles in the ADG on most scenarios, proper solutions for `eval_wait_action_removal_on_execution.py `can only be obtained for two specific maps in the benchmark.
+Please note that, due to cycles in the ADG on most scenarios, proper solutions for `eval_wait_action_removal_on_execution.py `can only be obtained for two maps - as seen in the paper.
 This limitation arose from a strategic decision to use this benchmark, which we were unable to correct before the deadline. 
-However, we believe this does not affect the validity of our evaluation on the impact of wait actions or the ADG construction process. This clarifies why the full benchmark was not used.
+However, we believe this does not affect the validity of our evaluation on the impact of wait actions nor does it have any influence on the ADG construction process. 
+This clarifies why the full benchmark was not used for the wait-action impact evaluation
 
