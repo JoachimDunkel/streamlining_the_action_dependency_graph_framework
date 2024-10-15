@@ -1,2 +1,60 @@
 # streamlining_the_action_dependency_graph_framework
 Supplementary Material  for the Paper: Streamlining the Action Dependency Graph Framework: Two Key Enhancements
+
+## Setup
+
+Assuming you have a Linux environment...
+
+### Build the cpp Part
+
+1. Install necessary cmake dependencies:
+```bash
+sudo apt update
+sudo apt install cmake python3-dev g++ git
+```
+
+2. Go to `cpp/scripts` and build the cmake project:
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+### Setup the Python Environment
+
+1. Create a virtual environment:
+```bash
+python3 -m venv venv  
+source venv/bin/activate
+```
+
+2. Install the necessary Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Download precomputed data from the Benchmark
+
+The publicly available benchmark used in our study is available at [mapf-lns-benchmark](https://github.com/ChristinaTan0704/mapf-lns-benchmark]).
+Either manually download the data [Download Initial States ->Ins2 init states JSON](https://github.com/ChristinaTan0704/mapf-lns-benchmark/blob/main/docs/data.md)
+and put it into the `mapf_benchmark/precomputed_solutions` directory.
+
+Or run the script `mapf_benchmark/download_precomputed_solutions.py`.
+
+In the rear case that the link becomes unavailable, please contact the conference organizers for further assistance.
+
+Note that this will only download the precomputed solutions (which exceed the 100MB submission limit), all benchmark maps should already be included
+in `mapf_benchmark/maps`.
+
+### Overview
+
+The repository is structured as follows:
+
+- `cpp/` contains the C++ implementation of the compared action dependency graph construction algorithms
+- `mapf_benchmark/` - where the benchmark data is stored
+- `src/evaluation/` - contains all the runnable scripts for this evaluation, most importantly :
+  - `evaluate_adg_construction_benchmark_performance.py` - evaluate the performance of the ADG construction algorithms and stores it in `mapf_benchmark/adg_results`
+  - `eval_wait_action_removal_on_execution.py`- evaluate the performance of the wait action removal on the execution time and stores it in `mapf_benchmark/simulation_results`
+
+Note: For both scripts, make sure to adjust the number of cores used.
+To visualize results, `plot_construction_runtime_line.py` and `plot_wait_action_removal.py` respectively.
+
