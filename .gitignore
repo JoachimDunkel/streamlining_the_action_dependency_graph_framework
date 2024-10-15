@@ -14,3 +14,6 @@ src/adg/__pycache__/
 src/common/__pycache__/
 
 venv
+src/adg_simulation/__pycache__/
+
+src/visualize/__pycache__/

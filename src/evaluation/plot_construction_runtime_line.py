@@ -246,7 +246,7 @@ def plot_runtime_comparison_grid_with_images(f_p, plot_type=PlotType.LINE_PLOT, 
 
 
 if __name__ == "__main__":
-    file_path = PATH_MAPF_BENCHMARK_ADG_RESULTS / "full_eval_no_exhaustive_with_type2_count.json"
+    file_path = PATH_MAPF_BENCHMARK_ADG_RESULTS / "iter_1_skip_wait_True_20241015_175907.json"
     plot_runtime_comparison_grid_with_images(
         file_path,
         plot_type=PlotType.NUM_TYP2_COMPARISON,

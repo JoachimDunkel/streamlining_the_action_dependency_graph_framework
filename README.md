@@ -68,5 +68,6 @@ The repository is structured as follows:
   - `eval_wait_action_removal_on_execution.py`- evaluate the performance of the wait action removal on the execution time and stores it in `mapf_benchmark/simulation_results`
 
 Note: For both scripts, make sure to adjust the number of cores used.
-To visualize results, `plot_construction_runtime_line.py` and `plot_wait_action_removal.py` respectively.
+To plot results, `plot_construction_runtime_line.py` and `plot_wait_action_removal.py` respectively.
+(manually change the file-name used in the script to the created evaluation result you want to plot)
 
