@@ -1,0 +1,17 @@
+distinctipy
+graphviz
+matplotlib
+networkx
+numpy
+pillow
+pydantic
+pydantic_core
+pygame
+pyparsing
+shapely
+ttictoc
+tdqm
+PyPubSub
+simpy
+scipy
+requests
