@@ -7,14 +7,14 @@ Assuming you have a Linux environment...
 
 ### Build the cpp Part
 
-1. Install necessary cmake dependencies:
+1. Install necessary dependencies:
 ```bash
-sudo apt update
-sudo apt install cmake python3-dev g++ git
+sudo apt update && sudo apt install cmake python3-dev g++ git python3-venv
 ```
 
 2. Go to `cpp/scripts` and build the cmake project:
 ```bash
+cd cpp/scripts
 chmod +x build.sh
 ./build.sh
 ```
@@ -32,13 +32,25 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+3. Export the root directory to PATH: (always before running something)
+```bash
+echo 'export PYTHONPATH=$(pwd)' >> venv/bin/activate
+source venv/bin/activate
+```
+
+4. Optional - Use Pycharm and skip 1 - 3.
+
+
 ### Download precomputed data from the Benchmark
 
 The publicly available benchmark used in our study is available at [mapf-lns-benchmark](https://github.com/ChristinaTan0704/mapf-lns-benchmark]).
 Either manually download the data [Download Initial States ->Ins2 init states JSON](https://github.com/ChristinaTan0704/mapf-lns-benchmark/blob/main/docs/data.md)
 and put it into the `mapf_benchmark/precomputed_solutions` directory.
 
-Or run the script `mapf_benchmark/download_precomputed_solutions.py`.
+Or run the command 
+```bash
+python3 mapf_benchmark/download_precomputed_solutions.py
+```
 
 In the rear case that the link becomes unavailable, please contact the conference organizers for further assistance.
 

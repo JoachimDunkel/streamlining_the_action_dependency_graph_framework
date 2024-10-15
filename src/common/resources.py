@@ -7,9 +7,9 @@ def _path_to_project_root(project_name):
     while not str(path).endswith(project_name):
         path = Path(path).parent
 
-    return path
+    return Path(path)
 
-PATH_ROOT_NAME = "empiric_evaluation"
+PATH_ROOT_NAME = "streamlining_the_action_dependency_graph_framework"
 PATH_ROOT_DIR = _path_to_project_root(PATH_ROOT_NAME)
 
 
