@@ -1,5 +1,6 @@
 import itertools
 import os
+from pathlib import Path
 
 from graphviz import Digraph
 
@@ -8,7 +9,7 @@ from src.adg.adg import ADG
 adg_counter = itertools.count()
 
 
-def visualize_adg(adg: ADG, show_id=False, view=True, file_prefix: str = None):
+def visualize_adg(adg: ADG, show_id=False, view=True, file_path: Path = None):
     if not adg.graph.nodes:
         print("Empty graph, cannot generate visualization.")
         return
@@ -56,7 +57,4 @@ def visualize_adg(adg: ADG, show_id=False, view=True, file_prefix: str = None):
             color = edge_color
             dot.edge(str(action.related_vertex_id), str(dep_action.related_vertex_id), color=color, style=style, constraint='true')
             
-    file_path = os.path.expanduser("~/Downloads/visualized_adg")
-    if file_prefix:
-        file_path += f"_{file_prefix}"
     dot.render(file_path, view=view, cleanup=True)

@@ -38,7 +38,7 @@ def process_scenario_multiprocess(scenario, iterations, skip_wait_actions, perfo
 
     for num_robots, solution_files in scenario.solution_files.items():
         tic()
-        pool = multiprocessing.Pool(processes=10)
+        pool = multiprocessing.Pool(processes=12)
 
         tasks = [(solution_file, grid_map, iterations, skip_wait_actions, skip_exhaustive)
                  for solution_file in solution_files]
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     ITERATIONS = 1
     SKIP_WAIT_ACTIONS = True
-    SKIP_EXHAUSTIVE = True # It just takes too long, aint nobody got time for that
+    SKIP_EXHAUSTIVE = False # It just takes too long, aint nobody got time for that
 
     out_file_path_ = PATH_MAPF_BENCHMARK_ADG_RESULTS / f"iter_{ITERATIONS}_skip_wait_{SKIP_WAIT_ACTIONS}.json"
     out_file_path_ = append_timestamp_to_filename(out_file_path_)

@@ -108,3 +108,29 @@ class ADG:
         predecessors = set(self.graph.predecessors(node_id))
         return list(successors.union(predecessors))
 
+    def is_acyclic(self):
+        return nx.is_directed_acyclic_graph(self.graph)
+
+    def transitive_reduction(self) -> 'ADG':
+        if not self.is_acyclic():
+            raise ValueError("Transitive reduction is only defined for directed acyclic graphs (DAGs).")
+
+        reduced_adg = ADG()
+
+        for node_id, data in self.graph.nodes(data=True):
+            reduced_adg.graph.add_node(node_id, **data)
+
+        edges = list(self.graph.edges())
+        for u, v in edges:
+            self.graph.remove_edge(u, v)  # Temporarily remove the edge
+            if not nx.has_path(self.graph, u, v):  # Check if reachability is lost
+                reduced_adg.graph.add_edge(u, v)  # Edge is essential, add to reduced graph
+            self.graph.add_edge(u, v)  # Re-add the edge
+
+        return reduced_adg
+
+    def has_same_edges(self, other: 'ADG') -> bool:
+        # Compare edges without considering node attributes
+        this_edges = set(self.graph.edges())
+        other_edges = set(other.graph.edges())
+        return this_edges == other_edges
