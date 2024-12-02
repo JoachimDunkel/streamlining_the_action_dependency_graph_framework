@@ -44,16 +44,11 @@ def run_comparison(actions: List[Action], skip_wait_actions: bool = True,
     if not skip_exhaustive:
         adg_naive = ADGBuilder().create_adg(actions, skip_wait_actions=skip_wait_actions).get_adg()
         comparison_result.naive = NaiveDepCreator().create_type2_dependencies(adg_naive)
-        if not adg_naive.is_acyclic():
-            return comparison_result
-
-        reduced_graph = adg_naive.transitive_reduction()
-
-        # if not reduced_graph.has_same_edges(adg_scp):
-            # f_p = append_timestamp_to_filename(Path("/home/dunkel3/Downloads/compare_scp_redundant/"))
-            # visualize_adg(reduced_graph, f_p / "adg_reduced")
-            # visualize_adg(adg_scp,  f_p / "adg_scp")
-            # print("Reduced graph and SCP graph are not equal.")
-        print(f"Comparing ADG results - Naive: {len(adg_naive.graph.edges())}, reduced: {len(reduced_graph.graph.edges)}, SCP edges: {len(adg_scp.graph.edges())}, cp edges: {len(adg_cp.graph.edges())}")
+        # if not adg_naive.is_acyclic():
+        #     return comparison_result
+        #
+        # reduced_graph = adg_naive.transitive_reduction()
+        #
+        # print(f"Comparing ADG results - Naive: {len(adg_naive.graph.edges())}, reduced: {len(reduced_graph.graph.edges)}, SCP edges: {len(adg_scp.graph.edges())}, cp edges: {len(adg_cp.graph.edges())}")
 
     return comparison_result

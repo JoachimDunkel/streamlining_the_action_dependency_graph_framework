@@ -122,6 +122,14 @@ class ADG:
 
         edges = list(self.graph.edges())
         for u, v in edges:
+
+            action_u = self.get_action(u)
+            action_v = self.get_action(v)
+
+            if action_u.shuttle_R == action_v.shuttle_R:
+                reduced_adg.graph.add_edge(u, v)
+                continue
+
             self.graph.remove_edge(u, v)  # Temporarily remove the edge
             if not nx.has_path(self.graph, u, v):  # Check if reachability is lost
                 reduced_adg.graph.add_edge(u, v)  # Edge is essential, add to reduced graph
